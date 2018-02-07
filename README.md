@@ -1,5 +1,5 @@
 # Axon Configuration Library
-[![Build Status](https://travis-ci.org/AITestingOrg/library--axon-configuration.svg?branch=master)](https://travis-ci.org/AITestingOrg/library--axon-configuration) [ ![Download](https://api.bintray.com/packages/aitestingorg/EventSourcingConfiguration/library--axon-configuration/images/download.svg) ](https://bintray.com/aitestingorg/EventSourcingConfiguration/library--axon-configuration/_latestVersion)
+[![Build Status](https://travis-ci.org/AITestingOrg/library--axon-configuration.svg?branch=master)](https://travis-ci.org/AITestingOrg/library--axon-configuration) [ ![Download](null/packages/aitestingorg/Java/axon-configuration/images/download.svg?version=v0.0.1) ](https://bintray.com/aitestingorg/Java/axon-configuration/v0.0.1/link)
 
 Easily configure Axon event sourcing and CQRS.
 
