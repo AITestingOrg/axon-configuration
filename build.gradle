@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        depManagementVersion = '1.0.4.RELEASE'
+        springBootVersion = '1.5.4.RELEASE'
+        axonVersion = '3.1.2'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:${depManagementVersion}"
+    }
+}
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: "io.spring.dependency-management"
+
+group = 'org.aist.libs'
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile("org.axonframework:axon-core:${axonVersion}")
+    compile("org.axonframework:axon-mongo:${axonVersion}")
+    compile("org.axonframework:axon-spring-boot-starter:${axonVersion}")
+    compile("org.axonframework:axon-spring-boot-autoconfigure:${axonVersion}")
+    compile("org.axonframework:axon-amqp:${axonVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    testCompile("org.axonframework:axon-test:${axonVersion}")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            url "$buildDir/repo"
+        }
+    }
+}
