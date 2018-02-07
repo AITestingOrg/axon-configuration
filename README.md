@@ -1,4 +1,6 @@
 # Axon Configuration Library
+[![Build Status](https://travis-ci.org/AITestingOrg/library--axon-configuration.svg?branch=master)](https://travis-ci.org/AITestingOrg/library--axon-configuration)
+
 Easily configure Axon event sourcing and CQRS.
 
 ## Usage
