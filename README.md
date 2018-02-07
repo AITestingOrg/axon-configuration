@@ -4,6 +4,14 @@ Easily configure Axon event sourcing and CQRS.
 ## Usage
 The library contains several AMQP Axon Configuration classes which can be extended from.
 
+### Gradle Configuration
+Coming soon!
+```groovy
+dependencies {
+	compile('org.aist.libs.eventsourcing.configuration')
+}
+```
+
 ### Setting up an Event Listener Application.
 To setup a event listener two files are required, a configuration class that extends the AmqpEventSubscriptionConfiguration and an application configuration.
 
