@@ -11,6 +11,10 @@ buildscript {
         classpath "io.spring.gradle:dependency-management-plugin:${depManagementVersion}"
     }
 }
+
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: "io.spring.dependency-management"
@@ -40,17 +44,25 @@ dependencyManagement {
     }
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'EventSourcingConfiguration'
+        name = 'library--axon-configuration'
+        userOrg = 'aistestingorg'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/AITestingOrg/library--axon-configuration.git'
     }
 }
+
 publishing {
-    repositories {
-        maven {
-            url "$buildDir/repo"
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'org.aist.libs.eventsourcing'
+            artifactId 'configuration'
+            version version
         }
     }
 }

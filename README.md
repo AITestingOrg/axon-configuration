@@ -10,7 +10,13 @@ The library contains several AMQP Axon Configuration classes which can be extend
 Coming soon!
 ```groovy
 dependencies {
-	compile('org.aist.libs.eventsourcing.configuration')
+	compile('org.aist.libs.eventsourcing:configuration')
+}
+
+repositories { 
+    maven { 
+        url "https://dl.bintray.com/aitestingorg/Java" 
+    } 
 }
 ```
 
