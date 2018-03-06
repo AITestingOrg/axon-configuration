@@ -12,6 +12,9 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.retry.annotation.Retryable;
+
+import java.net.ConnectException;
 
 /**
  * The AMQP Event Subscription Configuration binds the event handlers to an AMQP event queue for a configured
@@ -28,6 +31,7 @@ public class AmqpEventSubscriptionConfiguration extends AmqpConfiguration {
      * @return the configured AMQPAdmin
      */
     @Bean
+    @Retryable(value = ConnectException.class)
     public AmqpAdmin eventAdmin(ConnectionFactory connectionFactory, PropertiesConfiguration properties) {
         LOG.debug("eventAdmin(connectionFactory={})", connectionFactory);
         RabbitAdmin admin = new RabbitAdmin(connectionFactory);
