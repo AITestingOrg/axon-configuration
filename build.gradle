@@ -18,6 +18,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: "io.spring.dependency-management"
+apply plugin: 'checkstyle'
 
 group = 'org.aist.libs'
 version = '0.0.1'
@@ -56,6 +57,17 @@ bintray {
         userOrg = 'aistestingorg'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/AITestingOrg/library--axon-configuration.git'
+    }
+}
+
+
+checkstyle {
+    configFile = new File(rootDir, "checkstyle.xml")
+}
+
+checkstyleMain {
+    source = fileTree('src/main') {
+        excludes = ['*.yml']
     }
 }
 
