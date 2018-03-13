@@ -4,9 +4,6 @@ buildscript {
         springBootVersion = '1.5.4.RELEASE'
         axonVersion = '3.1.2'
     }
-    repositories {
-        jcenter()
-    }
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:${depManagementVersion}"
     }
@@ -15,8 +12,10 @@ buildscript {
 plugins {
     id "com.jfrog.bintray" version "1.7.3"
 }
+
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'java-library'
 apply plugin: "io.spring.dependency-management"
 apply plugin: 'checkstyle'
 
@@ -24,7 +23,39 @@ group = 'org.aist.libs'
 version = '0.0.1'
 
 repositories {
-    mavenCentral()
+    jcenter()
+    maven {
+        url  "https://dl.bintray.com/aitestingorg/Java"
+    }
+}
+
+bintray {
+    user = 'erinyoo'
+    key = '04e02410d5a394059e075da574bf5db0ae845d91'
+    publications = ['AxonPublication']
+    pkg {
+        repo = 'Java'
+        name = 'axon-configuration'
+        userOrg = 'aitestingorg'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/AITestingOrg/axon-configuration.git'
+        version {
+            name = 'v0.0.1'
+            desc = 'Axon Event Sourcing and CQRS'
+            vcsTag = 'v0.0.1'
+        }
+    }
+}
+
+publishing {
+    publications {
+        AxonPublication(MavenPublication) {
+            from components.java
+            groupId 'org.aist.libs.eventsourcing'
+            artifactId 'configurations'
+            version '0.0.1'
+        }
+    }
 }
 
 dependencies {
@@ -48,18 +79,6 @@ dependencyManagement {
     }
 }
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    pkg {
-        repo = 'EventSourcingConfiguration'
-        name = 'library--axon-configuration'
-        userOrg = 'aistestingorg'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/AITestingOrg/library--axon-configuration.git'
-    }
-}
-
 
 checkstyle {
     configFile = new File(rootDir, "checkstyle.xml")
@@ -68,16 +87,5 @@ checkstyle {
 checkstyleMain {
     source = fileTree('src/main') {
         excludes = ['*.yml']
-    }
-}
-
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            from components.java
-            groupId 'org.aist.libs.eventsourcing'
-            artifactId 'configuration'
-            version version
-        }
     }
 }
