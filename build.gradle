@@ -5,7 +5,19 @@ buildscript {
         axonVersion = '3.1.2'
     }
     dependencies {
+        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
         classpath "io.spring.gradle:dependency-management-plugin:${depManagementVersion}"
+    }
+    repositories {
+        maven {
+            url 'https://oss.jfrog.org/artifactory/plugins-release'
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+        }
+
     }
 }
 
@@ -26,6 +38,33 @@ repositories {
     jcenter()
     maven {
         url  "https://dl.bintray.com/aitestingorg/Java"
+    }
+}
+
+
+allprojects {
+    apply plugin: "com.jfrog.artifactory"
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"
+    publish {
+        repository {
+            repoKey = 'oss-release-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+
+        }
     }
 }
 
