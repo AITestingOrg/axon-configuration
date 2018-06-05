@@ -16,17 +16,17 @@
   },
 
   "version": {
-    "name": "0.5.1",
+    "name": "0.5.2",
     "desc": "Now published via BinTray",
     "released": "2018-06-05",
-    "vcs_tag": "0.5.1",
+    "vcs_tag": "0.5.2",
     "gpgSign": false
   },
 
   "files":
   [
-    {"includePattern": "build/libs(.*)*/(.*\\.jar)", "uploadPattern": "/$1"},
-    {"includePattern": "build/publications(.*)*/(.*\\.xml)", "uploadPattern": "/$1"},
+    {"includePattern": "build/libs/(.*)", "uploadPattern": "/$1"},
+    {"includePattern": "build/publications/MyPublication/(.*)", "uploadPattern": "/$1"},
     {"includePattern": "build/docs/(.*)", "uploadPattern": "docs/$1"}
   ],
   "publish": true
