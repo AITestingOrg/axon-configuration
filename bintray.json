@@ -1,7 +1,8 @@
 {
   "package": {
     "name": "axon-configuration",
-    "repo": "aitestingorg-java",
+    "repo": "Java",
+    "user": "aitestingorg",
     "userOrg": "aitestingorg",
     "subject": "castyr",
     "desc": "I was pushed completely automatically",
