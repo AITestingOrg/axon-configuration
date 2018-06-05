@@ -25,8 +25,8 @@
 
   "files":
   [
-    {"includePattern": "build/libs(.*)*/(.*\\.jar)"},
-    {"includePattern": "build/publications(.*)*/(.*\\.xml)"},
+    {"includePattern": "build/libs(.*)*/(.*\\.jar)", "uploadPattern": "/$1"},
+    {"includePattern": "build/publications(.*)*/(.*\\.xml)", "uploadPattern": "/$1"},
     {"includePattern": "build/docs/(.*)", "uploadPattern": "docs/$1"}
   ],
   "publish": true
