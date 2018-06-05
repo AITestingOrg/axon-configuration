@@ -4,7 +4,10 @@ jdk:
 encoding: utf8
 script:
 - gradle assemble
-- gradle publish
+- gradle javadoc
+- gradle sourcesJar
+- gradle javadocJar
+- gradle generatePomFileForMyPublicationPublication
 deploy:
   provider: bintray
   file: bintray.json

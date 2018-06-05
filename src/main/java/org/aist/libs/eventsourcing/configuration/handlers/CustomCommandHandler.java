@@ -7,7 +7,6 @@ import org.axonframework.eventsourcing.EventSourcingRepository;
 /**
  * CustomCommandHandler provides a pattern and default implementation for subscribing the command
  * handlers.
- * @param <T>
  */
 public abstract class CustomCommandHandler<T> {
     protected AggregateAnnotationCommandHandler<T> handler;

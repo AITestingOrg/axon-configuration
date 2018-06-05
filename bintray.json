@@ -16,10 +16,10 @@
   },
 
   "version": {
-    "name": "0.5.2",
+    "name": "0.5.3",
     "desc": "Now published via BinTray",
     "released": "2018-06-05",
-    "vcs_tag": "0.5.2",
+    "vcs_tag": "0.5.3",
     "gpgSign": false
   },
 
